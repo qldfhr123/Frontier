@@ -1,0 +1,443 @@
+/* ================================================================= */
+/*                            사용자 페이지                          */
+/* ================================================================= */
+
+#user_container {
+    margin: 0 auto;
+  }
+  
+  .user_content_box {
+    width: 975px;
+    padding: 30px 20px 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .user_header {
+    width: 975px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
+  
+  .user_top {
+    width: 290px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .user_img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+  
+  .user_info_box {
+    width: 610px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .user_section {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .user_name h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: lighter;
+  }
+  
+  .profile_modify,
+  .archive_story {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    font-size: 15px;
+    padding: 0 10px;
+    margin: 0 8px;
+    border-radius: 5px;
+    background-color: #efefef;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .profile_modify:hover,
+  .archive_story:hover {
+    background-color: lightgray;
+  }
+  
+  .setting_img {
+    width: 15px;
+    height: 15px;
+    color: black;
+  }
+  
+  .user_follow {
+    display: flex;
+    padding-left: 0;
+  }
+  
+  .user_follow > li {
+    list-style: none;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  
+  .user_follow > li > span {
+    font-weight: bold;
+  }
+  
+  .user_detail > span {
+    font-weight: bold;
+  }
+  
+  .user_detail > p {
+    font-size: 12px;
+    margin: 0;
+  }
+  
+  /* 저장 스토리 */
+  .storage_story {
+    width: 935px;
+    display: flex;
+    margin-bottom: 44px;
+  }
+  
+  .storage_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .storage_plus {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    border: 1px solid #efefef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fafafa;
+  }
+  
+  .storage_img {
+    width: 45px;
+    height: 45px;
+    color: lightgray;
+  }
+  
+  .storage_title {
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  
+  /* ─── 탭 네비게이션 ─── */
+  .user_navi {
+    width: 935px;
+    border-top: 1px solid #efefef;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+  }
+  
+  .posting,
+  .stored_post,
+  .tag_post {
+    width: 57px;
+    height: 57px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  
+  .posting {
+    border-top: 1px solid #000;
+    color: #000;
+  }
+  
+  .stored_post,
+  .tag_post {
+    border-top: none;
+    color: #737373;
+    margin-left: 60px;
+  }
+  
+  .navi_img {
+    width: 13px;
+    height: 13px;
+  }
+  
+  /* ─── 피드 그리드 ─── */
+  .posting_page {
+    display: grid !important;
+    grid-template-columns: repeat(3, 309px);
+    grid-auto-rows: 309px;
+    gap: 4px;
+    width: 935px;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  .posting_box {
+    position: relative !important;
+    width: 309px !important;
+    height: 309px !important;
+    overflow: hidden;
+  }
+  
+  .posting_box .posting_img {
+    position: absolute !important;
+    top: 0; left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  
+  /* ─── 저장됨 & 태그됨 페이지 ─── */
+  .stored_post_page,
+  .tag_post_page {
+    display: none;
+    width: 935px;
+    margin: 0 auto;
+  }
+  
+  .tag_line,
+  .posting_line {
+    display: contents;
+  }
+  
+  .tag_box,
+  .posting_box {
+    overflow: hidden;
+  }
+  
+  .tag_img,
+  .posting_img {
+    object-fit: cover;
+  }
+  
+  /* ─── 디테일 모달 ─── */
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    display: flex;
+    width: 70vw;
+    height: 90vh;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 8px; right: 12px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  .detail-left {
+    flex: 1.5;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .detail-right {
+    flex: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  
+  .modal-caption {
+    margin-bottom: 12px;
+    color: #333;
+  }
+  
+  .modal-like-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-bottom: 12px;
+  }
+  
+  .modal-like-count {
+    margin-bottom: 12px;
+  }
+  
+  .modal-comments {
+    flex: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px;
+    overflow-y: auto;
+  }
+  
+  .modal-comments li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-comment-form {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .modal-comment-form input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .modal-comment-form button {
+    padding: 8px 16px;
+    background: #3897f0;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* 이전/다음 버튼 */
+  .modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    user-select: none;
+    z-index: 10;
+  }
+  
+  .modal-prev { left: 8px; }
+  .modal-next { right: 8px; }
+  
+  
+  /* ================================================================= */
+  /*                       글쓰기(writeModal) 모달                     */
+  /* ================================================================= */
+  
+  .modal#writeModal .modal-content {
+    width: 80%;
+    max-width: 900px;
+    height: 80vh;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal#writeModal .modal-close {
+    top: 0.5rem;
+    right: 1rem;
+  }
+  
+  .modal#writeModal h2 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  .write-wrapper {
+    flex: 1;
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  /* 왼쪽 60%: 이미지 영역 */
+  .write-image {
+    flex: 6;
+    background: #f7f7f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .write-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  /* 오른쪽 40%: 입력 폼 */
+  .write-form {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+  }
+  .write-form textarea {
+    flex: 3;
+    resize: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: .5rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  .actions {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .actions input[type="file"] {
+    flex: 1;
+  }
+  .actions button {
+    flex: 1;
+    padding: .5rem;
+    background: #3897f0;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: .5;
+    transition: opacity .2s;
+  }
+  .actions button.enabled {
+    opacity: 1;
+  }
+  
