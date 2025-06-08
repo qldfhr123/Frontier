@@ -18,7 +18,7 @@ function App() {
       // });
 
       // 축약 버전 => 안전 장치가 걸린다 (통신이 꼬일 우려가있으므로), async ~await >> 안전장치 해제
-      const data = await axios.get("https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=82ca741a2844c5c180a208137bb92bd7&targetDt=20120101");
+      const data = await axios.get("https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=27ac8f72eea1d11cea781512d9dfb384&targetDt=20120101");
       console.log(data);
     }
 
