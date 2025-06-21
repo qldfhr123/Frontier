@@ -1,3 +1,4 @@
+import chalk from "chalk";
 import { waitForInput } from "./input";
 import { Action, ActionDeleteTodo, ActionNewTodo, AppState, Priority, PRIORITY_NAME_MAP } from "./type";
 import { getIsValidEnumValue } from "./util";
@@ -5,7 +6,7 @@ import { getIsValidEnumValue } from "./util";
 export abstract class Command {
     constructor(public key: string, private desc: string ){}
     toStirng() {
-        return `${this.key}: ${this.desc}`;
+        return chalk`${this.key}: ${this.desc}`;
     }
 
     abstract run(state: AppState): Promise<void | Action>
@@ -13,7 +14,8 @@ export abstract class Command {
 
 export class CommandPrintTodos extends Command {
     constructor() {
-        super('p', '모든 할 일 출력하기')
+        // super('p', '모든 할 일 출력하기')
+        super('p', chalk`모든 할일 {red.bold 출력}하기`)
     }
     async run(state: AppState): Promise<void> {
         for( const todo of state.todos) {
@@ -26,7 +28,9 @@ export class CommandPrintTodos extends Command {
 
 export class CommandNewTodos extends Command {
     constructor() {
-        super('n', '할 일 추가하기')
+        // super('n', chalk`추가하기`)
+        super('n', chalk`할 일 {red.bold 추가}하기`)
+
     }
     async run(state: AppState): Promise<void | ActionNewTodo> {      
        const title =  await  waitForInput('title: ');
@@ -50,7 +54,9 @@ export class CommandNewTodos extends Command {
 
 export class CommandDeleteTodos extends Command {
     constructor() {
-        super('d', '할 일 삭제')
+        // super('d', '할 일 삭제')
+        super('d', chalk`할 일 {red.bold 제거}하기`)
+
     }
     async run(state: AppState): Promise<void | ActionDeleteTodo> {      
         for( const todo of state.todos) {

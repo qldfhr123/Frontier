@@ -1,5 +1,6 @@
 // console.log("hello");
 
+import chalk from "chalk";
 import { Command, CommandDeleteTodos, CommandNewTodos, CommandPrintTodos } from "./Command";
 import { waitForInput } from "./input";
 import Todo from "./Todo";
@@ -21,6 +22,12 @@ async function main() {
     }
     while (true) {
         console.clear();
+
+        // Tagged Template Literals
+        // console.log(chalk`aaa bbb ccc`);
+        // console.log(chalk`aaa {bold bbb} ccc`);
+        // console.log(chalk`aaa {yellow.bold bbb} ccc`);
+
         for(const command of commands){
             console.log(command.toStirng());
         }
